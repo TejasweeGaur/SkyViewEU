@@ -24,6 +24,40 @@ SkyViewEu is a Coursera project designed to provide users with up-to-date weathe
 
 - **Animated Text Header:** The project name in the header section features an animated text effect, adding a visually appealing touch to the overall user interface.
 
+## Solution
+
+The goal of SkyViewEu is to create a user-friendly and visually appealing weather forecast application that allows users to quickly access weather information for European cities and countries. By integrating city data from a CSV file, utilizing the 7Timer API, and employing interactive elements, the app offers an efficient way to stay informed about weather conditions.
+
+## Approach
+
+1. **Data Collection:**
+
+   - The project begins by fetching city and country data from a CSV file (`city_countries.csv`). This data is used to populate the custom drop-down menu for city and country selection.
+
+2. **User Interaction:**
+
+   - Users can either select a city and country from the drop-down list or use the search functionality to find specific cities quickly.
+
+3. **Latitude and Longitude Logging:**
+
+   - When users select a city and country, the corresponding latitude and longitude information are captured for further use.
+
+4. **7Timer API Integration:**
+
+   - The collected latitude and longitude parameters are sent to the 7Timer API, which returns comprehensive weather forecasts for the next 7 days, including today. The API response includes essential weather details.
+
+5. **User Experience Enhancement:**
+
+   - The app allows users to switch between Celsius and Fahrenheit temperature units to cater to their preferences.
+   - Animated weather icons visually represent different weather types, enhancing the understanding of forecasts.
+
+6. **Data Presentation:**
+
+   - The weather data for each day is presented in an organized grid format. Interactive hover effects provide additional information when users interact with forecast entries.
+
+7. **Visual Appeal:**
+   - An animated text header adds an attractive touch to the project's interface, making it more engaging for users.
+
 ## Usage
 
 1. Open the web application.
