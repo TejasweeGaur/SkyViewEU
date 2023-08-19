@@ -66,7 +66,17 @@ The goal of SkyViewEu is to create a user-friendly and visually appealing weathe
 4. Toggle between Celsius and Fahrenheit temperature units as needed.
 5. Observe the animated weather icons, hover effects, and other interactive elements for a comprehensive weather viewing experience.
 
-## Technologies Used
+## Skills Showcased
+
+- Dynamic data retrieval using JavaScript.
+- Creating custom drop-down menus with search functionality.
+- Integration of third-party APIs (7Timer API).
+- User interface design and styling with CSS.
+- Interactive elements and hover effects.
+- Temperature unit conversion.
+- Animation effects for improved user experience.
+
+## Tools Used
 
 - JavaScript for fetching data and creating interactive elements.
 - CSS for styling the user interface and grid layout.
