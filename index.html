@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>SkyViewEU</title>
+</head>
+
+<body>
+    <header class="gradientText">SkyViewEU</header>
+    <h5 class="poweredBy">Powered by
+        <a href="http://www.7timer.info/doc.php?lang=en" target="_blank"
+            title="Click here to view 7Timer API for weather information" rel="noreferrer noopener" class="apiLink">
+            &nbsp&nbsp&nbsp<button class="apiButton">7Timer !</button></a>
+    </h5>
+    <main>
+        <div class="wrapper">
+            <div class="select-btn">
+                <img src="/assets/search.gif" alt="Search Icon" class="searchIcon">
+                <input type="text" placeholder="Select a City" class="searchCity"></input>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div id="tempConvertor">
+                <p>Using <span id="unitDisplay">Celcius</span>.
+                    <a href="#" id="toggleLink">Switch to <span id="unitChange">°F</span></a>
+                </p>
+            </div>
+            <div class="content">
+                <ul class="cityCountrynames"></ul>
+            </div>
+        </div>
+        <div class="wrapperCard">
+            <h2 data-text="Loading...">Loading...</h2>
+            <div class="gridWeatherWatcher"></div>
+        </div>
+    </main>
+    <footer>&copy; 2023 SkyViewEu. All rights reserved.</footer>
+    <script src="index.js"></script>
+</body>
+
+
+</html>
