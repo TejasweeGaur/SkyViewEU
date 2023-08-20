@@ -1,6 +1,4 @@
 let cityCountrynames = document.querySelector(".cityCountrynames");
-const WEATHER_API_URL = new URL("http://www.7timer.info/bin/api.pl?");
-const UNSPLASH_PHOTOS_API_URL = new URL("https://api.unsplash.com/");
 const wrapper = document.querySelector(".wrapper");
 const selectBtn = document.querySelector(".select-btn");
 const searchCity = document.querySelector(".searchCity");
@@ -97,10 +95,7 @@ function updateCity(selectedLi) {
                 if (row.city === selectedCity[0]) {
                     let latitude = row.latitude;
                     let longitude = row.longitude;
-                    WEATHER_API_URL.searchParams.set("lon", longitude);
-                    WEATHER_API_URL.searchParams.set("lat", latitude);
-                    WEATHER_API_URL.searchParams.set("product", "civillight");
-                    WEATHER_API_URL.searchParams.set("output", "json");
+                    const WEATHER_API_URL = `/api?lon=${longitude}&lat=${latitude}&product=civillight&output=json`;
                     fetchWeatherInfo(WEATHER_API_URL);
                 }
             });
@@ -115,7 +110,6 @@ async function fetchWeatherInfo(url) {
         if (response.ok) {
             hideLoader();
             const weatherData = await response.json();
-            console.log(searchCity);
             createWeatherInfoCards(weatherData);
         }
         else {
@@ -184,50 +178,51 @@ function formatDate(dateString) {
 }
 
 function createWeatherInfoCards(weatherData) {
-    const daysWeather = weatherData.dataseries;
-    let weatherCard = "";
-    daysWeather.forEach(dayWeather => {
-        var { formattedDateString, isToday } = formatDate(dayWeather.date.toString());
-        var dailyWeatherDiv = document.createElement("div");
-        var dateDiv = document.createElement("div");
-        var weatherIconDiv = document.createElement("div");
-        var imgDiv = document.createElement("img");
-        var weatherInfoDiv = document.createElement("div");
-        var maxTempDiv = document.createElement("div");
-        var minTempDiv = document.createElement("div");
-        var weatherIconInfo = document.createElement("div");
+    if (weatherData != null) {
+        const daysWeather = weatherData.dataseries;
+        daysWeather.forEach(dayWeather => {
+            var { formattedDateString, isToday } = formatDate(dayWeather.date.toString());
+            var dailyWeatherDiv = document.createElement("div");
+            var dateDiv = document.createElement("div");
+            var weatherIconDiv = document.createElement("div");
+            var imgDiv = document.createElement("img");
+            var weatherInfoDiv = document.createElement("div");
+            var maxTempDiv = document.createElement("div");
+            var minTempDiv = document.createElement("div");
+            var weatherIconInfo = document.createElement("div");
 
-        dateDiv.className = "date";
-        weatherIconDiv.className = "weatherIcon";
-        imgDiv.className = "bx";
-        weatherInfoDiv.className = "weatherInfo";
-        maxTempDiv.className = "maxTemp";
-        minTempDiv.className = "minTemp";
-        weatherIconInfo.className = "weatherIconInfo";
+            dateDiv.className = "date";
+            weatherIconDiv.className = "weatherIcon";
+            imgDiv.className = "bx";
+            weatherInfoDiv.className = "weatherInfo";
+            maxTempDiv.className = "maxTemp";
+            minTempDiv.className = "minTemp";
+            weatherIconInfo.className = "weatherIconInfo";
 
-        weatherIconDiv.appendChild(imgDiv);
-        weatherInfoDiv.appendChild(weatherIconInfo);
-        weatherInfoDiv.appendChild(maxTempDiv);
-        weatherInfoDiv.appendChild(minTempDiv);
+            weatherIconDiv.appendChild(imgDiv);
+            weatherInfoDiv.appendChild(weatherIconInfo);
+            weatherInfoDiv.appendChild(maxTempDiv);
+            weatherInfoDiv.appendChild(minTempDiv);
 
-        dailyWeatherDiv.classList.add("dailyWeather");
-        if (isToday) {
-            dailyWeatherDiv.classList.add("grid-row-span-2");
-        }
+            dailyWeatherDiv.classList.add("dailyWeather");
+            if (isToday) {
+                dailyWeatherDiv.classList.add("grid-row-span-2");
+            }
 
-        dailyWeatherDiv.appendChild(dateDiv);
-        dailyWeatherDiv.appendChild(weatherIconDiv);
-        dailyWeatherDiv.appendChild(weatherInfoDiv);
+            dailyWeatherDiv.appendChild(dateDiv);
+            dailyWeatherDiv.appendChild(weatherIconDiv);
+            dailyWeatherDiv.appendChild(weatherInfoDiv);
 
-        dateDiv.innerText = formattedDateString;
-        imgDiv.setAttribute("src", weatherIcons[dayWeather.weather]);
-        weatherIconInfo.innerText = weatherIconInformation[dayWeather.weather];
-        maxTempDiv.innerText = "High : " + dayWeather.temp2m.max + " °C";
-        maxTempDiv.setAttribute("data-tempHigh", dayWeather.temp2m.max);
-        minTempDiv.innerText = "Low : " + dayWeather.temp2m.min + " °C";
-        minTempDiv.setAttribute("data-tempLow", dayWeather.temp2m.min);
-        gridWeatherWatcher.appendChild(dailyWeatherDiv);
-    });
+            dateDiv.innerText = formattedDateString;
+            imgDiv.setAttribute("src", weatherIcons[dayWeather.weather]);
+            weatherIconInfo.innerText = weatherIconInformation[dayWeather.weather];
+            maxTempDiv.innerText = "High : " + dayWeather.temp2m.max + " °C";
+            maxTempDiv.setAttribute("data-tempHigh", dayWeather.temp2m.max);
+            minTempDiv.innerText = "Low : " + dayWeather.temp2m.min + " °C";
+            minTempDiv.setAttribute("data-tempLow", dayWeather.temp2m.min);
+            gridWeatherWatcher.appendChild(dailyWeatherDiv);
+        });
+    }
 }
 
 function showLoader() {
