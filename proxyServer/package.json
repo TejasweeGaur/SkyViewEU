@@ -4,7 +4,7 @@
   "description": "A proxy server built to access public apis and unprotected apis",
   "main": "proxyServer.js",
   "engines": {
-    "node": "14.x"
+    "node": ">=16.0"
   },
   "scripts": {
     "start": "node proxyServer",

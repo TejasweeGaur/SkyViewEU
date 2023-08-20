@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+// const public = require('../public/')
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
@@ -17,7 +18,7 @@ app.use(limiter);
 app.set('trust proxy', 1);
 
 // Set static Folder
-app.use(express.static('public'));
+app.use(express.static('../public/'));
 
 app.use("/api", require("./routes/7timerRoutes.js"));
 
