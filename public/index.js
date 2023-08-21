@@ -15,7 +15,6 @@ let extractedData = [];
 
 selectBtn.addEventListener("click", () => {
     wrapper.classList.toggle("active");
-    content.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     content.style.color = "white";
 });
 
